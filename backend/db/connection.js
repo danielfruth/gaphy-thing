@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
-const mongoURI = 'mongodb://localhost/gifs';
+let mongoURI = '';
 const db = mongoose.connection;
+
+if (process.env.NODE_ENV === 'production') {
+  mongoURI = process.env.DB_URL;
+} else {
+  mongoURI = 'mongodb://localhost/gifs';
+}
 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,

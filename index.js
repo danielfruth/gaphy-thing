@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
-const port = process.env.PORT || 3000;
 const gifController = require('./backend/controllers/gifs');
 
 app.use(cors());
@@ -15,4 +14,8 @@ app.get('/', (req, res) => {
 
 app.use('/gifs', gifController);
 
-app.listen(port, () => console.log('running on port ' + port));
+app.set('port', process.env.PORT || 3000);
+
+app.listen(app.get('port'), () => {
+  console.log(`✅ PORT: ${app.get('port')} 🌟`);
+});

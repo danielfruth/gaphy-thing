@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const mongoURI = 'mongodb://localhost/gifs';
+const db = mongoose.connection;
 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
